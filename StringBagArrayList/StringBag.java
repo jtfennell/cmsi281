@@ -2,8 +2,6 @@ import java.util.ArrayList;
 
 public class StringBag implements SimpleCollection{
     private ArrayList<Object> stringGroup;
-    private int numberOfStrings;
-    private boolean isEmpty;
 
     public static void main(String[] args){
         
@@ -11,8 +9,6 @@ public class StringBag implements SimpleCollection{
 
     public StringBag(){
         stringGroup = new ArrayList<Object>();
-        numberOfStrings = 0;
-        isEmpty = true;
     }
 
     public boolean add ( Object stringToAdd ){
@@ -23,8 +19,6 @@ public class StringBag implements SimpleCollection{
         }
 
         stringGroup.add(stringToAdd);
-        isEmpty = false;
-        numberOfStrings++;
 
         return true;
     };
@@ -32,9 +26,6 @@ public class StringBag implements SimpleCollection{
     /** Removes all of the elements from this collection (optional operation). */
     public void clear(){
         stringGroup.clear();
-        numberOfStrings = 0;
-        isEmpty = true;
-
     };
     
     /** Returns true if this collection contains the specified element. */
@@ -44,7 +35,6 @@ public class StringBag implements SimpleCollection{
         if (!(stringToFind instanceof String)){
             throw new IllegalArgumentException();
         }
-        
 
         int indexOfString = stringGroup.indexOf(stringToFind);
         
@@ -56,7 +46,7 @@ public class StringBag implements SimpleCollection{
     
     /** Returns true if this collection contains no elements. */
     public boolean isEmpty(){
-        return isEmpty;
+        return stringGroup.isEmpty();
     };
     
     /** Removes a single instance of the specified element from this collection, if it is present. */
@@ -74,22 +64,18 @@ public class StringBag implements SimpleCollection{
         
         if (containsStringToRemove){
             stringGroup.remove(indexOfString);
-            numberOfStrings--;
         }
-            
 
-        return true;
+        return containsStringToRemove;
     };
     
     /** Returns the number of elements in this collection. */
     public int size(){
-        return 0;
+        return stringGroup.size();
     };
     
     /** Returns an array containing all of the elements in this collection. */
     public Object[] toArray(){
-
-    Object[] returnArray = new Object[1];
-     return returnArray;
+        return stringGroup.toArray();
     };
 }
