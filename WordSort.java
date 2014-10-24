@@ -32,21 +32,43 @@ public class WordSort{
 			lineOfInput = stdIn.readLine();
 		}	
 
-		//sortWords();
+		sortWords();
 		printSortedWords();
 	}
-	/**sorts the words in the input file using mergeSort 
-	*/
-	
+
+	/**sorts the words in the input file using mergeSort algorithm */
 	public static ArrayList sortWords(ArrayList inputWords){
 		
 		if (inputWords.size() == 1){
 			return inputWords;
 		}
 		else{
-			int center;
+			int centerOfArray = (int) Math.floor(inputWords.size() / 2);
+			boolean numberWordsOdd = (inputWords.size() % 2) != 0;
+			WordCounter lastWord = inputWords.get(inputWords.size() - 1);
+
+			//breaks the original array into two smaller arrays
+			ArrayList rightSubArray = new ArrayList();
+			ArrayList leftSubArray = new ArrayList();
+
+			for (int i = 0; i < centerOfArray ; i++ ) {
+				leftSubArray.set(i, inputWords(i));
+				rightSubArray.set(i, inputWords(i + centerOfArray));
+			}
+
+			if (numberItemsOdd) {
+				rightSubArray.add(lastItem);
+			}
 		}
-		return new ArrayList();
+		sortWords(leftSubArray);
+		sortWords(rightSubArray);
+		ArrayList sortedWords = merge(leftSubArray, rightSubArray);
+
+		return sortedWords;
+	}
+
+	public static merge(ArrayList leftSubArray, ArrayList rightSubArray){
+
 	}
 
 	/**loops through the characters in the standard input to parse words*/
