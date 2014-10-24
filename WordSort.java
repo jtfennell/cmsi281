@@ -4,15 +4,16 @@ use WordCounter objects to store the words and their word counts
 bugs:
 	-apostrophes will be recognized as a new word.
 	-single words not recognized. problem with identifyWords method
-	-3 empty strings being saved as words
-
+		-problem is that when a single word is inputted, if there are no non-letter characters at the end of the word, the program does not recognize the end of the word
+	-if last character of file is a letter, that word is not recognized (unless it ends with a non-letter)
+To work on:
+	-implement case sensitivity through command line arg
 */
 import java.io.*;
 import java.util.ArrayList;
 /**
 Sorts the words inputted via stdinput, outputs all of the words in the input sorted, displaying the number of occurences of each word 
 **/
-
 public class WordSort{
 	public static ArrayList inputWords = new ArrayList();
 	public static boolean inputCaseSensitive = false;
@@ -29,28 +30,27 @@ public class WordSort{
 		while (lineOfInput != null){
 			identifyWords(lineOfInput);
 			lineOfInput = stdIn.readLine();
-
-			printSortedWords();
 		}	
+
+		//sortWords();
+		printSortedWords();
 	}
 	/**sorts the words in the input file using mergeSort 
 	*/
-	/**
+	
 	public static ArrayList sortWords(ArrayList inputWords){
 		
 		if (inputWords.size() == 1){
 			return inputWords;
 		}
 		else{
-			ArrayList leftArray = 
-			ArrayList rightArray = 
+			int center;
 		}
+		return new ArrayList();
 	}
-	*/
 
 	/**loops through the characters in the standard input to parse words*/
 	public static void identifyWords(String lineOfInput){
-			
 			String word = "";
 			boolean lastCharacterLetter = false;
 
@@ -63,29 +63,42 @@ public class WordSort{
 			else{
 				//checks if last character was a letter to make sure empty strings are not added to the word collection
 				if (lastCharacterLetter) {
-					inputWords.add(word);
-					System.out.println(word);
+					add(word);
 					word = "";
 				}
 				lastCharacterLetter = false;
-				
-				
 			}
 		}
 	}
 
-	public String toString(){
-		//for compilation purposes (remove)
-		return "hi";
-	} 
-
 	public static void printSortedWords(){
 		for(int i = 0; i < inputWords.size(); i++){
+			System.out.println(((WordCounter)inputWords.get(i)).toString() + " " + ((WordCounter)inputWords.get(i)).getNumberOfAppearances());
 		}
 	}
 
-	public static void wordAlreadySeen(){
-
+	public static void add(String wordToAdd){
+		//if there are no words in the collection, adds the word 
+		if (inputWords.size() == 0) {
+			inputWords.add(new WordCounter(wordToAdd));
+			
+		}
+		else{
+			//checks to see if the word has already been seen in the input
+			// and increments the number of appearances if it has
+			boolean seenWord = false;
+			
+			for (int i = 0; i < inputWords.size() ; i++ ) {
+				if (((WordCounter)inputWords.get(i)).toString().equals(wordToAdd)) {
+					((WordCounter)inputWords.get(i)).incrementAppearances();
+					seenWord = true;
+				}
+			}
+			//after iterating through the array, if the word has not been seen already, it is added to the collection
+			if (!seenWord) {
+				inputWords.add(new WordCounter(wordToAdd));
+			}
+		}
 	}
-
 }
+	
