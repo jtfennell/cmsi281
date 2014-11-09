@@ -1,11 +1,5 @@
-/**to add:
--in catch statement- check to see if argument is one of the acceptable operators. throw new IllegalArgumentException() if it isn't
--problem: illegal exception argument should be thrown at the beginning of the program
-
-  */
-
 public class ExpressionEvaluator{
-
+    /**Evaluates expression in reverse Polish notation. Uses operators +, -, x, /, %*/
 	public static void main(String[] args) {
         int numOfInts = 0;
         int numOfOperators = 0;
@@ -22,11 +16,11 @@ public class ExpressionEvaluator{
                }
            }
            else {
-               try{
+                try{
                 Integer.parseInt(args[i]);
                 numOfInts++;
-               }
-               catch (NumberFormatException e){
+                }
+                catch (NumberFormatException e){
                 throw new IllegalArgumentException("Non-operator string detected");
                }
            }
@@ -35,15 +29,15 @@ public class ExpressionEvaluator{
         CustomizedStack stack = new CustomizedStack();
 		int result;
 
-         //tries to parse the argument into an integer. If no exception is thrown, the arg is an integer and is added to the stack
+        //tries to parse the argument into an integer. If no exception is thrown, the arg is an integer and is pushed to the stack
 		for (int i = 0; i < args.length ; i++ ) {           
             try{
 				int parsedInt = Integer.parseInt(args[i]);
 				stack.push(parsedInt);
 			}
 			//if a number format exception is thrown, then the argument is an operator and expression is evaluated
+            //if there is only 1 item in the stack, the operator does nothing to the stack
 			catch (NumberFormatException e){
-				
 				if (stack.size() > 1) {
 					int value1 = stack.pop();
 					int value2 = stack.pop();
@@ -64,10 +58,8 @@ public class ExpressionEvaluator{
                         stack.push(value2 % value1);
                     }			
                 }
-				
 			}
 		}
-		
         System.out.println(stack.pop());
 	}
 
