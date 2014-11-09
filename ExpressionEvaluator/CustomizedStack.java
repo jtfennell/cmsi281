@@ -4,7 +4,6 @@ public class CustomizedStack{
 
 	/**Instantiates an empty stack*/
 	public CustomizedStack(){
-
 	}
 
 	/**Adds a new number to the top of the stack*/
@@ -12,7 +11,7 @@ public class CustomizedStack{
 		StackNode newTop = new StackNode(nodeValue);
 
 		if (itemsInStack > 0) {
-			newTop.setPrevious(this.topOfStack);
+			newTop.setPrevious(topOfStack);
 		}
 		else{
 			newTop.setPrevious(null);
@@ -23,12 +22,18 @@ public class CustomizedStack{
 	}
 
 	/**Removes the top value from the stack and returns it */
-	public int pop(){
-		Node topNode = topOfStack;
+	public int pop() throws IndexOutOfBoundsException{
+		if (itemsInStack == 0) {
+			throw new IndexOutOfBoundsException();
+		}
+		StackNode topNode = topOfStack;
 		topOfStack = topOfStack.getPrevious();
 		itemsInStack--;
 		
 		return topNode.value();
 	}
 
+	public int size(){
+		return itemsInStack;
+	}
 }
