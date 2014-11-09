@@ -7,13 +7,14 @@ public class StackNode{
 		this.value = value;
 		this.previousNode = previousNode;
 	}
+
 	/**Constructor that sets only the value of the Node*/
 	public StackNode (int value){
 		this.value = value;
 	}
+
 	/**Instantiates an empty stack*/
 	public StackNode(){
-
 	}
 
 	/**Sets the reference to the previous Node*/
@@ -23,11 +24,10 @@ public class StackNode{
 	
 	/**Returns the reference to the node underneath in the stack*/
 	public StackNode getPrevious(){
-	return previousNode;
+		return previousNode;
 	}
 	/**returns the integer value of the Node*/
 	public int value(){
 		return value;
 	}
-
 }
