@@ -28,6 +28,7 @@ public class LoneSurvivor{
 			if (passesPerTurn % 2 == 0){
 				survivor = 1;
 			}
+			//if there is only one player, then that player is the survivor
 			else{
 				survivor = 0;
 			}
