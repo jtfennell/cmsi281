@@ -61,5 +61,11 @@ public class CircularList{
 
 			cursor = previous;
 		}
+		size--;
+	}
+
+	/**returns the number of elements in the circular list*/
+	public int size(){
+		return size;
 	}
 }
