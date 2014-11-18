@@ -1,3 +1,4 @@
+/**Custom implementation of a Circular List that stores integer elements*/
 public class CircularList{
 	private CircNode cursor;
 	private int size = 0;
@@ -5,13 +6,14 @@ public class CircularList{
 	public CircularList(){
 
 	}
-	/**returns the integer most recently added to the list*/
-	public CircNode get(){
-		return cursor;
+
+	/**returns the integer indicated by the cursor*/
+	public int get(){
+		return cursor.value();
 	}
 
 	/**adds a new value to the circular list*/
-	public void add(int value){
+	public boolean add(int value){
 		CircNode newnode = new CircNode(value);
 
 		if(size == 0){
@@ -38,5 +40,26 @@ public class CircularList{
 		}
 
 		size++;
+		//collection will have always changed, as the circular list accepts duplicates
+		return true;
+	}
+
+	/**removes the integer indicated by the current position of the cursor*/
+	public void remove(){
+		if (size == 0) {
+			throw new NullPointerException("There are no items in the list");
+		}
+		else if (size == 1){
+			cursor = null;
+		}
+		else{
+			CircNode previous = cursor.getPrevious();
+			CircNode next = cursor.getNext();
+
+			next.setPrevious(previous);
+			previous.setNext(next);
+
+			cursor = previous;
+		}
 	}
 }
