@@ -2,7 +2,7 @@ public class CircNode{
 	private CircNode previousNode;
 	private CircNode nextNode;
 	private int value;
-	private boolean isValid = true;
+	
 
 	public CircNode(int value, CircNode previousNode, CircNode nextNode){
 		this.value = value;
@@ -32,12 +32,5 @@ public class CircNode{
 
 	public int value(){
 		return value;
-	}
-
-	public void makeInvalid(){
-		isValid = false;
-	}
-	public boolean isValid(){
-		return isValid;
 	}
 }
