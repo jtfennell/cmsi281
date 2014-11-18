@@ -21,7 +21,7 @@ public class CircularList{
 			newnode.setNext(newnode);
 			cursor = newnode;
 		}
-		else if (size = 1){
+		else if (size == 1){
 			cursor.setNext(newnode);
 			cursor.setPrevious(newnode);
 
@@ -45,7 +45,7 @@ public class CircularList{
 	}
 
 	/**removes the integer indicated by the current position of the cursor*/
-	public void remove(){
+	public boolean remove(){
 		if (size == 0) {
 			throw new NullPointerException("There are no items in the list");
 		}
@@ -59,13 +59,21 @@ public class CircularList{
 			next.setPrevious(previous);
 			previous.setNext(next);
 
-			cursor = previous;
+			cursor = next;
 		}
+		
 		size--;
+
+		//collection will have always changed as long as there is at least one item in the list
+		return true;
 	}
 
 	/**returns the number of elements in the circular list*/
 	public int size(){
 		return size;
+	}
+
+	public void advanceCursor(){
+		cursor = cursor.getNext();
 	}
 }
