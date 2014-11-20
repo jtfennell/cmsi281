@@ -46,7 +46,6 @@ public class LoneSurvivor{
 				}
 				players.remove();
 			}
-
 			survivor = players.get();
 		}
 		System.out.println(survivor);
