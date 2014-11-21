@@ -7,12 +7,12 @@ public class CircularList{
 
 	}
 
-	/**returns the integer indicated by the cursor*/
+	/**Returns the integer indicated by the cursor*/
 	public int get(){
 		return cursor.value();
 	}
 
-	/**adds a new value to the circular list*/
+	/**Adds a new value to the circular list*/
 	public boolean add(int value){
 		CircNode newnode = new CircNode(value);
 
@@ -44,7 +44,7 @@ public class CircularList{
 		return true;
 	}
 
-	/**removes the integer indicated by the current position of the cursor*/
+	/**Removes the integer indicated by the current position of the cursor*/
 	public boolean remove(){
 		if (size == 0) {
 			throw new NullPointerException("There are no items in the list");
@@ -68,11 +68,12 @@ public class CircularList{
 		return true;
 	}
 
-	/**returns the number of elements in the circular list*/
+	/**Eeturns the number of elements in the circular list*/
 	public int size(){
 		return size;
 	}
 
+	/**Moves the cursor to the next node in the list */
 	public void advanceCursor(){
 		cursor = cursor.getNext();
 	}
