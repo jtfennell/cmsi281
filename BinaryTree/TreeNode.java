@@ -16,5 +16,7 @@ public class TreeNode {
 		this.leftChild = leftChild;
 	}
 
-
+	public TreeNode getParent () {
+		return parentNode;
+	}
 }
