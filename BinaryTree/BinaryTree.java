@@ -56,7 +56,6 @@ public class BinaryTree implements Collection {
 			BinaryTree newleftMost = new BinaryTree(objectToAdd);
 			newleftMost.setParent(leftMostNode);
 			leftMostNode.setLeftSubtree(newleftMost);
-
 		}
 		numberOfNodes++;
 
@@ -113,12 +112,12 @@ public class BinaryTree implements Collection {
 
 	/**Returns the hashcode value for the tree.*/
 	public int hashCode() {
-		throw new UnsupportedOperationException();
+		return super.hashCode();
 	}
 
 	/**Returns true if the tree contains no nodes.*/
 	public boolean isEmpty() {
-		return rootData == null;
+		return numberOfNodes == 0;
 	}
 
 	/**Returns a preorder iterator over the tree.*/
@@ -130,12 +129,12 @@ public class BinaryTree implements Collection {
 	public boolean remove(Object objectToRemove) {
 		leftMostNode = leftMostNode.getParent();
 
-		//tree will always change when a new node is added
+		//tree will always change when a new node is removed
 		return true;
 	}
 
 	/**Removes the nodes from the tree that are objects contained within the specified collection.*/
-	public boolean removeAll() {
+	public boolean removeAll(Collection c) {
 		boolean treeChanged = false;
 
 		return treeChanged;
@@ -167,11 +166,6 @@ public class BinaryTree implements Collection {
 
 	/**Keeps all nodes in the tree who's data is also in the passed in Collection, removing the rest*/
 	public boolean retainAll(Collection c) {
-		throw new UnsupportedOperationException();
-	}
-
-	/**Removes all nodes in the tree who's data is also in the passed in collection*/
-	public boolean removeAll(Collection c) {
 		throw new UnsupportedOperationException();
 	}
 
