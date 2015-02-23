@@ -59,13 +59,15 @@ public class ExpressionEvaluator {
 	}
 
 	public static boolean isOperator(String s){
-		boolean isOneCharacter = s.length() == 1;
-		boolean isAddOperator = s.equals("+");
-		boolean isSubtractOperator = s.equals("-");
-		boolean isMultiplyOperator = s.equals("x");
-		boolean isDivideOperator = s.equals("/");
-		boolean isModOperator = s.equals("%");
-
-		return (isOneCharacter &&(isAddOperator || isSubtractOperator || isMultiplyOperator || isDivideOperator || isModOperator));
+		String[] possibleOperators = {"+", "-", "x", "/", "%"};
+        boolean isOperator = false;
+        boolean isOneCharacter = s.length() == 1;
+        
+        for (int i = 0; i < possibleOperators.length ; i++ ) {
+            if (s.equals(possibleOperators[i])) {
+                isOperator = true;
+            }
+        }
+        return isOperator;
 	}
 }
