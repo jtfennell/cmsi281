@@ -1,5 +1,5 @@
 /**Custom implementation of a Circular List that stores integer elements*/
-public class CircularList{
+public class CircularList {
 	private CircNode cursor;
 	private int size = 0;
 
@@ -8,28 +8,26 @@ public class CircularList{
 	}
 
 	/**Returns the integer indicated by the cursor*/
-	public int get(){
+	public int get() {
 		return cursor.value();
 	}
 
 	/**Adds a new value to the circular list*/
-	public boolean add(int value){
+	public boolean add(int value) {
 		CircNode newnode = new CircNode(value);
 
-		if(size == 0){
+		if(size == 0) {
 			newnode.setPrevious(newnode);
 			newnode.setNext(newnode);
 			cursor = newnode;
-		}
-		else if (size == 1){
+		} else if (size == 1) {
 			cursor.setNext(newnode);
 			cursor.setPrevious(newnode);
 
 			newnode.setNext(cursor);
 			newnode.setPrevious(cursor);
 			cursor = newnode;
-		}
-		else{
+		} else {
 			cursor.getNext().setPrevious(newnode);
 			newnode.setNext(cursor.getNext());
 
@@ -45,14 +43,12 @@ public class CircularList{
 	}
 
 	/**Removes the integer indicated by the current position of the cursor*/
-	public boolean remove(){
+	public boolean remove() {
 		if (size == 0) {
 			throw new NullPointerException("There are no items in the list");
-		}
-		else if (size == 1){
+		} else if (size == 1) {
 			cursor = null;
-		}
-		else{
+		} else {
 			CircNode previous = cursor.getPrevious();
 			CircNode next = cursor.getNext();
 
@@ -69,12 +65,12 @@ public class CircularList{
 	}
 
 	/**Eeturns the number of elements in the circular list*/
-	public int size(){
+	public int size() {
 		return size;
 	}
 
 	/**Moves the cursor to the next node in the list */
-	public void advanceCursor(){
+	public void advanceCursor() {
 		cursor = cursor.getNext();
 	}
 }
