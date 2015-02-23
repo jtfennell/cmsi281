@@ -3,7 +3,7 @@ public class CustomizedStack {
 	private int itemsInStack = 0;
 
 	/**Instantiates an empty stack*/
-	public CustomizedStack(){
+	public CustomizedStack() {
 	}
 
 	/**Adds a new number to the top of the stack*/
