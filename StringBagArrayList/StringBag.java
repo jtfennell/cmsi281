@@ -1,20 +1,20 @@
 import java.util.ArrayList;
 
-public class StringBag implements SimpleCollection{
+public class StringBag implements SimpleCollection {
     private ArrayList<Object> stringGroup;
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         
     }
 
-    public StringBag(){
+    public StringBag() {
         stringGroup = new ArrayList<Object>();
     }
 
-    public boolean add ( Object stringToAdd ){
+    public boolean add ( Object stringToAdd ) {
 
         //error checking to make sure the object being passed in is actually a string
-       if (!(stringToAdd instanceof String)){
+       if (!(stringToAdd instanceof String)) {
          throw new IllegalArgumentException();
         }
 
@@ -24,15 +24,15 @@ public class StringBag implements SimpleCollection{
     };
     
     /** Removes all of the elements from this collection (optional operation). */
-    public void clear(){
+    public void clear() {
         stringGroup.clear();
     };
     
     /** Returns true if this collection contains the specified element. */
-    public boolean contains ( Object stringToFind ){
+    public boolean contains ( Object stringToFind ) {
         
         //error checking to make sure the object being passed in is actually a string
-        if (!(stringToFind instanceof String)){
+        if (!(stringToFind instanceof String)) {
             throw new IllegalArgumentException();
         }
 
@@ -45,15 +45,15 @@ public class StringBag implements SimpleCollection{
     };
     
     /** Returns true if this collection contains no elements. */
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return stringGroup.isEmpty();
     };
     
     /** Removes a single instance of the specified element from this collection, if it is present. */
-    public boolean remove ( Object stringToRemove ){
+    public boolean remove ( Object stringToRemove ) {
        
         //error checking to make sure the object being passed in is actually a string
-       if (!(stringToRemove instanceof String)){
+       if (!(stringToRemove instanceof String)) {
          throw new IllegalArgumentException();
         }
 
@@ -62,7 +62,7 @@ public class StringBag implements SimpleCollection{
         //indexOf method returns -1 if the ArrayList does not contain the item
         boolean containsStringToRemove = !(indexOfString == -1);
         
-        if (containsStringToRemove){
+        if (containsStringToRemove) {
             stringGroup.remove(indexOfString);
         }
 
@@ -70,12 +70,12 @@ public class StringBag implements SimpleCollection{
     };
     
     /** Returns the number of elements in this collection. */
-    public int size(){
+    public int size() {
         return stringGroup.size();
     };
     
     /** Returns an array containing all of the elements in this collection. */
-    public Object[] toArray(){
+    public Object[] toArray() {
         return stringGroup.toArray();
     };
 }
