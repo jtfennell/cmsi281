@@ -1,6 +1,6 @@
 public class ExpressionEvaluator {
     /**Evaluates expression in reverse Polish notation. Uses operators +, -, x, /, %*/
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         int numOfInts = 0;
         int numOfOperators = 0;
 
@@ -26,22 +26,22 @@ public class ExpressionEvaluator {
         }
 
         CustomizedStack stack = new CustomizedStack();
-		int result;
+        int result;
 
         //tries to parse the argument into an integer. If no exception is thrown, the arg is an integer and is pushed to the stack
-		for (int i = 0; i < args.length ; i++ ) {           
+        for (int i = 0; i < args.length ; i++ ) {           
             try{
-				int parsedInt = Integer.parseInt(args[i]);
-				stack.push(parsedInt);
-			}
-			//if a number format exception is thrown, then the argument is an operator and expression is evaluated
+                int parsedInt = Integer.parseInt(args[i]);
+                stack.push(parsedInt);
+            }
+            //if a number format exception is thrown, then the argument is an operator and expression is evaluated
             //if there is only 1 item in the stack, the operator does nothing to the stack
-			catch (NumberFormatException e) {
-				if (stack.size() > 1) {
-					int value1 = stack.pop();
-					int value2 = stack.pop();
+            catch (NumberFormatException e) {
+                if (stack.size() > 1) {
+                    int value1 = stack.pop();
+                    int value2 = stack.pop();
 
-    				if (args[i].equals("+")) {
+                    if (args[i].equals("+")) {
                         stack.push(value2 + value1);
                     } else if (args[i].equals("-")){
                         stack.push(value2 - value1);
@@ -51,15 +51,15 @@ public class ExpressionEvaluator {
                         stack.push(value2 / value1);
                     } else if (args[i].equals("%")){
                         stack.push(value2 % value1);
-                    }			
+                    }           
                 }
-			}
-		}
+            }
+        }
         System.out.println(stack.pop());
-	}
+    }
 
-	public static boolean isOperator(String s){
-		String[] possibleOperators = {"+", "-", "x", "/", "%"};
+    public static boolean isOperator(String s){
+        String[] possibleOperators = {"+", "-", "x", "/", "%"};
         boolean isOperator = false;
         boolean isOneCharacter = s.length() == 1;
         
@@ -69,5 +69,5 @@ public class ExpressionEvaluator {
             }
         }
         return isOperator;
-	}
+    }
 }
